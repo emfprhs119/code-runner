@@ -1,0 +1,58 @@
+[
+  {
+    "language": "python",
+    "title": "Python",
+    "extension": "py",
+    "sample": "def main():\n  print(\"Hello, World! Python!\")\n\nmain()",
+    "check": "py --version",
+    "runner": "py __filename__"
+  },
+  {
+    "language": "javascript",
+    "title": "Javascript",
+    "extension": "js",
+    "sample": "function main(){\n  console.log(\"Hello, World! Javascript!\")\n}\n\nmain()",
+    "check": "node --version",
+    "runner": "node __filename__"
+  },
+  {
+    "language": "java",
+    "title": "Java",
+    "extension": "java",
+    "sample": "class Sample {\n  public static void main(String[] args){\n    System.out.println(\"Hello, World! Java!\");\n  }\n}",
+    "check": "java --version",
+    "runner": "java __filename__"
+  },
+  {
+    "language": "csharp",
+    "title": "C#",
+    "extension": "cs",
+    "sample": "static void Main()\n{\n  Console.WriteLine(\"Hello, World! Csharp!\");\n}\n\nMain();",
+    "check": "dotnet --version",
+    "runner": "dotnet script __filename__"
+  },
+  {
+    "language": "rust",
+    "title": "Rust",
+    "extension": "rs",
+    "sample": "fn mainFn() {\n  println!(\"Hello, World! Rust!\");\n}\nmainFn();",
+    "check": "rust-script --version",
+    "runner": "rust-script __filename__"
+  },
+  {
+    "language": "ruby",
+    "title": "Ruby",
+    "extension": "rb",
+    "sample": "def main\n  puts \"Hello, World! Ruby!\"\nend\n\nmain()",
+    "check": "ruby --version",
+    "runner": "ruby __filename__"
+  },
+  {
+    "language": "perl",
+    "title": "Perl",
+    "extension": "pl",
+    "sample": "sub main{\n  print(\"Hello, World! Perl!\");\n}\n\nmain",
+    "check": "perl --version",
+    "runner": "perl __filename__"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "applicationId": "neutralinojs.mins.coderunner",
+  "version": "0.0.1",
+  "defaultMode": "window",
+  "documentRoot": "/react-src/build/",
+  "url": "/",
+  "enableServer": true,
+  "enableNativeAPI": true,
+  "singlePageServe": true,
+  "nativeAllowList": ["app.*", "computer.*", "window.*", "filesystem.*", "os.*", "storage.*"],
+  "logging": {
+    "enabled": true,
+    "writeToLogFile": true
+  },
+  "modes": {
+    "window": {
+      "title": "CodeRunner",
+      "width": 800,
+      "height": 600,
+      "minWidth": 400,
+      "minHeight": 250,
+      "fullScreen": false,
+      "alwaysOnTop": false,
+      "icon": "/react-src/public/assets/images/vite.png",
+      "enableInspector": false,
+      "borderless": true,
+      "maximize": false,
+      "hidden": true,
+      "resizable": true,
+      "exitProcessOnClose": false,
+      "useSavedState": false,
+      "center": true
+    }
+  },
+  "cli": {
+    "binaryName": "CodeRunner",
+    "resourcesPath": "/react-src/build/",
+    "extensionsPath": "/extensions/",
+    "binaryVersion": "5.3.0",
+    "clientVersion": "5.3.0",
+    "frontendLibrary": {
+      "patchFile": "/react-src/index.html",
+      "devUrl": "http://localhost:3000",
+      "projectPath": "/react-src/",
+      "initCommand": "npm install",
+      "devCommand": "npm run dev",
+      "buildCommand": "npm run build"
+    }
+  }
+}

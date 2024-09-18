@@ -1,0 +1,17 @@
+{
+  "name": "code-runner",
+  "private": true,
+  "repository": "emfprhs119/code-runner",
+  "license": "MIT",
+  "author": {
+    "name": "emfprhs119",
+    "url": "https://github.com/emfprhs119"
+  },
+  "scripts": {
+    "dev": "neu run -- --window-enable-inspector",
+    "build": "neu build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.20"
+  }
+}

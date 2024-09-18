@@ -1,0 +1,33 @@
+.ant-tabs-nav {
+  user-select: none;
+}
+.ant-tabs-tab {
+  border-radius: 0 !important;
+  padding: 6px 6px !important;
+  color: gray !important;
+}
+.ant-tabs-tab .ant-tabs-tab-active {
+  color: #881111 !important;
+}
+.ant-tabs-tab-icon {
+  margin-inline-end: 0 !important;
+}
+.ant-tabs-tab-icon svg {
+  margin-bottom: -2px;
+  margin-right: 2px;
+}
+
+.titlebar-icon {
+  display: 'flex';
+  flex-direction: 'column';
+  justify-content: 'center';
+  align-items: 'center';
+  padding: 5px;
+  margin: 0px;
+  &:hover {
+    background-color: rgb(80, 80, 80);
+  }
+}
+.hover-red:hover {
+  background-color: red;
+}
