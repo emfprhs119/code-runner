@@ -7,7 +7,15 @@
   "enableServer": true,
   "enableNativeAPI": true,
   "singlePageServe": true,
-  "nativeAllowList": ["app.*", "computer.*", "window.*", "filesystem.*", "os.*", "storage.*"],
+  "nativeAllowList": [
+    "app.*",
+    "computer.*",
+    "window.*",
+    "filesystem.*",
+    "os.*",
+    "storage.*",
+    "debug.*"
+  ],
   "logging": {
     "enabled": true,
     "writeToLogFile": true
@@ -36,8 +44,8 @@
     "binaryName": "CodeRunner",
     "resourcesPath": "/react-src/build/",
     "extensionsPath": "/extensions/",
-    "binaryVersion": "5.3.0",
-    "clientVersion": "5.3.0",
+    "binaryVersion": "5.6.0",
+    "clientVersion": "5.6.0",
     "frontendLibrary": {
       "patchFile": "/react-src/index.html",
       "devUrl": "http://localhost:3000",

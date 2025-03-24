@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansKr.css);
+
 body {
   width: var(--width);
   height: var(--height);
@@ -7,7 +9,7 @@ body {
   width: var(--width);
   height: var(--height);
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   margin: 0;

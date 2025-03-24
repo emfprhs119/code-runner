@@ -6,13 +6,13 @@ let dragging = false,
   posY = 0,
   lastScreenX = 0,
   lastScreenY = 0,
-  intervalId: number | null,
+  intervalId: number | null | NodeJS.Timeout,
   dragInterval = false,
   ratioUpdateForInterval = 0;
 
 export const setDraggableRegion = async (draggable: HTMLElement) => {
   draggable!.onmousedown = async function (e) {
-    let commandOut = await os.execCommand('DpiChecker');
+    let commandOut = await os.execCommand('DpiChecker', { cwd: 'third_party' });
     if (commandOut.stdOut) {
       ratio = parseInt(commandOut.stdOut) / 96;
     } else {
@@ -24,7 +24,7 @@ export const setDraggableRegion = async (draggable: HTMLElement) => {
 
     intervalId = setInterval(() => {
       if (ratioUpdateForInterval > 400) {
-        os.execCommand('DpiChecker').then((commandOut) => {
+        os.execCommand('DpiChecker', { cwd: 'third_party' }).then((commandOut) => {
           const dpr = parseInt(commandOut.stdOut) / 96;
           if (dpr != ratio) {
             ratio = dpr;

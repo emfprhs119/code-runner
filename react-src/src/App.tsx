@@ -1,20 +1,18 @@
 import * as S from '@src/styled';
-import { Spin, Tabs, TabsProps, Flex } from 'antd';
+import { Spin, Tabs, TabsProps } from 'antd';
 import { CodeWithResult } from '@src/components/code-with-result';
 import { useEffect, useState } from 'react';
 import { setDraggableRegion } from '@src/lib/setDraggableRegion';
 import { LangIcon } from '@src/components/language-icon';
 import IconClose from '@src/icons/close';
 import IconMinus from '@src/icons/minus';
-// import IconDown from '@src/icons/down';
-// import IconConfig from '@src/icons/config';
 import { onWindowClose as onClose, onWindowMinimize as onMinimize } from '@src/main';
 import { titlebarIconProps } from '@src/common/props';
 import '@styles/index.css';
 import '@styles/code.css';
 import { TabActiveContext } from './common/contexts';
-import { loadLanguageJson } from './backend/resource';
 import { languageType } from './styles/type';
+import { loadLanguageJson } from './backend/runner';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('');
@@ -33,7 +31,7 @@ export function App() {
   const OperationsSlot: Record<'left' | 'right', React.ReactNode> = {
     left: <S.FlexWrapper id='tabBarLeftArea'></S.FlexWrapper>,
     right: (
-      <S.FlexWrapper>
+      <S.FlexWrapper id='tabBarRightArea'>
         {/* <IconDown {...titlebarIconProps} style={{ paddingTop: '2px' }} />
         <IconConfig {...titlebarIconProps} /> */}
         <IconMinus onClick={onMinimize} {...titlebarIconProps} />

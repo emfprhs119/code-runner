@@ -1,5 +1,28 @@
-import { filesystem, os } from '@neutralinojs/lib';
-const basePath = window.NL_PATH + `/.tmp`;
+import { debug, filesystem, os, app } from '@neutralinojs/lib';
+import { languageType } from '@src/styles/type';
+const basePath = window.NL_PATH + `/.storage`;
+let isDebugMode = false;
+
+async function exec(command: string, options?: os.ExecCommandOptions): Promise<os.ExecCommandResult> {
+  if (isDebugMode) debug.log(`RUN: ${command}`);
+  const result = await os.execCommand(command, options);
+  if (isDebugMode) debug.log(`RESULT: ${command} / ${JSON.stringify(result)}`);
+  return result;
+}
+
+export async function loadLanguageJson() {
+  const config = await app.getConfig();
+  isDebugMode = config.enableInspector;
+  const languageJson = JSON.parse(await filesystem.readFile(`${window.NL_PATH}/language.json`));
+  const languages: languageType[] = [];
+  await Promise.all(
+    languageJson.map(async (lang: languageType) => {
+      const result = await exec(`which ${lang.runner.split(' ')[0]}`, { cwd: 'third_party' });
+      if (result.exitCode === 0) languages.push(lang);
+    })
+  );
+  return languages;
+}
 
 export async function getLastCode(extension: string) {
   const filename = `code.${extension}`;
@@ -18,7 +41,7 @@ export async function runnerExecute(runner: string, code: string, extension: str
   const filename = `code.${extension}`;
   const fullFilePath = `${basePath}/${filename}`;
   await filesystem.writeFile(fullFilePath, code);
-  let command = runner.replace('__filename__', fullFilePath);
-  let commandOut = await os.execCommand(command);
-  return commandOut.stdOut || commandOut.stdErr;
+  const command = runner.replace('__filename__', fullFilePath);
+  const result = await exec(command);
+  return result.stdOut || result.stdErr;
 }

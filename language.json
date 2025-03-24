@@ -1,24 +1,36 @@
 [
   {
-    "language": "python",
-    "title": "Python",
-    "extension": "py",
-    "sample": "def main():\n  print(\"Hello, World! Python!\")\n\nmain()",
-    "check": "py --version",
-    "runner": "py __filename__"
-  },
-  {
     "language": "javascript",
     "title": "Javascript",
     "extension": "js",
+    "install": "https://nodejs.org/ko/download/",
     "sample": "function main(){\n  console.log(\"Hello, World! Javascript!\")\n}\n\nmain()",
     "check": "node --version",
     "runner": "node __filename__"
   },
   {
+    "language": "typescript",
+    "title": "Typescript",
+    "extension": "ts",
+    "install": "> npm i -g tsx",
+    "sample": "function main(message:string){\n  console.log(message)\n}\n\nmain(\"Hello, World! Typescript!\")",
+    "check": "tsx --version",
+    "runner": "tsx __filename__"
+  },
+  {
+    "language": "python",
+    "title": "Python",
+    "extension": "py",
+    "install": "https://www.python.org/downloads/",
+    "sample": "def main():\n  print(\"Hello, World! Python!\")\n\nmain()",
+    "check": "python --version",
+    "runner": "python __filename__"
+  },
+  {
     "language": "java",
     "title": "Java",
     "extension": "java",
+    "install": "https://www.oracle.com/java/technologies/javase-jdk11-downloads.html",
     "sample": "class Sample {\n  public static void main(String[] args){\n    System.out.println(\"Hello, World! Java!\");\n  }\n}",
     "check": "java --version",
     "runner": "java __filename__"
@@ -27,6 +39,7 @@
     "language": "csharp",
     "title": "C#",
     "extension": "cs",
+    "install": "https://dotnet.microsoft.com/download/dotnet/5.0",
     "sample": "static void Main()\n{\n  Console.WriteLine(\"Hello, World! Csharp!\");\n}\n\nMain();",
     "check": "dotnet --version",
     "runner": "dotnet script __filename__"
@@ -35,6 +48,7 @@
     "language": "rust",
     "title": "Rust",
     "extension": "rs",
+    "install": "https://www.rust-lang.org/tools/install",
     "sample": "fn mainFn() {\n  println!(\"Hello, World! Rust!\");\n}\nmainFn();",
     "check": "rust-script --version",
     "runner": "rust-script __filename__"
@@ -43,6 +57,7 @@
     "language": "ruby",
     "title": "Ruby",
     "extension": "rb",
+    "install": "https://www.ruby-lang.org/en/downloads/",
     "sample": "def main\n  puts \"Hello, World! Ruby!\"\nend\n\nmain()",
     "check": "ruby --version",
     "runner": "ruby __filename__"
@@ -51,6 +66,7 @@
     "language": "perl",
     "title": "Perl",
     "extension": "pl",
+    "install": "https://www.perl.org/get.html",
     "sample": "sub main{\n  print(\"Hello, World! Perl!\");\n}\n\nmain",
     "check": "perl --version",
     "runner": "perl __filename__"

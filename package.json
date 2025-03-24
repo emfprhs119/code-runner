@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "neu run -- --window-enable-inspector",
-    "build": "neu build"
+    "build": "neu build",
+    "postbuild": "cp -r ./third_party ./dist/CodeRunner/ && cp ./language.json ./dist/CodeRunner/language.json"
   },
   "devDependencies": {
     "@types/node": "^20.11.20"
