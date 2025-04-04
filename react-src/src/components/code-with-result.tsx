@@ -43,17 +43,25 @@ export const CodeWithResult = ({ language, extension, sample, runner }: language
   const IconSplit = isHorizontal ? IconSplitCellsVertical : IconSplitCellsHorizontal;
   return (
     <>
-      <Split horizontal={isHorizontal} initialPrimarySize={'65%'} minPrimarySize='15%' minSecondarySize='15%'>
-        <div className='editor' style={{ height: '100%', overflow: 'auto' }}>
+      <Split
+        horizontal={isHorizontal}
+        initialPrimarySize={settings.splitPercent ?? '65%'}
+        onSplitChanged={(primarySize: string) => {
+          setSettings((prev) => ({
+            ...prev,
+            splitPercent: primarySize,
+          }));
+        }}
+        minPrimarySize='15%'
+        minSecondarySize='15%'>
+        <S.EditorWrapper>
           <AceEditor
             width='100%'
             height='100%'
             placeholder=''
             mode={language}
             theme='monokai'
-            onChange={(code) => {
-              setCode(code);
-            }}
+            onChange={setCode}
             fontSize={16}
             lineHeight={23}
             showPrintMargin={false}
@@ -69,15 +77,9 @@ export const CodeWithResult = ({ language, extension, sample, runner }: language
               tabSize: 2,
             }}
           />
-        </div>
-        <S.TextareaWrapper className='code-output'>
-          <S.TextArea
-            style={{
-              backgroundColor: '#1f1f1f',
-              color: loading ? 'gray' : 'white',
-            }}
-            value={output}
-            readOnly={true}></S.TextArea>
+        </S.EditorWrapper>
+        <S.TextareaWrapper>
+          <S.TextArea style={{ color: loading ? 'gray' : 'white' }} value={output} readOnly={true}></S.TextArea>
         </S.TextareaWrapper>
       </Split>
       <>

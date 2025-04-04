@@ -8,14 +8,16 @@ export const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-export const ContentWrapper = styled.div`
-  height: calc(100vh - 28px);
-`;
 export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+`;
+export const EditorWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  overflow: auto;
 `;
 export const TextareaWrapper = styled.div`
   display: flex;
@@ -34,6 +36,7 @@ export const FixedFlexWrapper = styled.div`
 `;
 export const TextArea = styled.textarea`
   flex: 1;
+  background-color: #1f1f1f;
   resize: none;
   padding: 6px;
   font-size: 16px;

@@ -7,15 +7,7 @@
   "enableServer": true,
   "enableNativeAPI": true,
   "singlePageServe": true,
-  "nativeAllowList": [
-    "app.*",
-    "computer.*",
-    "window.*",
-    "filesystem.*",
-    "os.*",
-    "storage.*",
-    "debug.*"
-  ],
+  "nativeAllowList": ["app.*", "computer.*", "window.*", "filesystem.*", "os.*", "storage.*", "debug.*"],
   "logging": {
     "enabled": true,
     "writeToLogFile": true
@@ -29,11 +21,11 @@
       "minHeight": 250,
       "fullScreen": false,
       "alwaysOnTop": false,
-      "icon": "/react-src/public/assets/images/vite.png",
+      "icon": "/react-src/public/assets/images/icon.png",
       "enableInspector": false,
-      "borderless": true,
+      "borderless": false,
       "maximize": false,
-      "hidden": true,
+      "hidden": false,
       "resizable": true,
       "exitProcessOnClose": false,
       "useSavedState": false,

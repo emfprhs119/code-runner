@@ -3,6 +3,7 @@ import { atom, AtomEffect } from 'recoil';
 
 type SettingsState = {
   splitType: 'horizontal' | 'vertical';
+  splitPercent: string | undefined;
 };
 
 const defaultSplitState = { splitType: 'horizontal' };

@@ -2,12 +2,7 @@ import * as S from '@src/styled';
 import { Spin, Tabs, TabsProps } from 'antd';
 import { CodeWithResult } from '@src/components/code-with-result';
 import { useEffect, useState } from 'react';
-import { setDraggableRegion } from '@src/lib/setDraggableRegion';
 import { LangIcon } from '@src/components/language-icon';
-import IconClose from '@src/icons/close';
-import IconMinus from '@src/icons/minus';
-import { onWindowClose as onClose, onWindowMinimize as onMinimize } from '@src/main';
-import { titlebarIconProps } from '@src/common/props';
 import '@styles/index.css';
 import '@styles/code.css';
 import { TabActiveContext } from './common/contexts';
@@ -17,14 +12,15 @@ import { loadLanguageJson } from './backend/runner';
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('');
   const [languageJson, setLanguageJson] = useState<languageType[]>([]);
+  const [isTabVisible, setIsTabVisible] = useState<boolean>(true);
   const items: TabsProps['items'] = languageJson.map((langObj) => ({
     key: langObj.language,
     label: langObj.title,
     icon: <LangIcon lang={langObj.language} />,
     children: (
-      <S.ContentWrapper>
+      <div style={{ height: isTabVisible ? 'calc(100vh - 32px)' : '100vh' }}>
         <CodeWithResult {...langObj} />
-      </S.ContentWrapper>
+      </div>
     ),
   }));
 
@@ -32,10 +28,10 @@ export function App() {
     left: <S.FlexWrapper id='tabBarLeftArea'></S.FlexWrapper>,
     right: (
       <S.FlexWrapper id='tabBarRightArea'>
-        {/* <IconDown {...titlebarIconProps} style={{ paddingTop: '2px' }} />
-        <IconConfig {...titlebarIconProps} /> */}
-        <IconMinus onClick={onMinimize} {...titlebarIconProps} />
-        <IconClose onClick={onClose} {...{ ...titlebarIconProps, className: 'titlebar-icon hover-red' }} />
+        {/* <IconDown {...titlebarIconProps} style={{ paddingTop: '2px' }} /> */}
+        {/* <IconConfig {...titlebarIconProps} /> */}
+        {/* <IconMinus onClick={onMinimize} {...titlebarIconProps} /> */}
+        {/* <IconClose onClick={onClose} {...{ ...titlebarIconProps, className: 'titlebar-icon hover-red' }} /> */}
       </S.FlexWrapper>
     ),
   };
@@ -43,13 +39,18 @@ export function App() {
     loadLanguageJson().then((json: languageType[]) => {
       setActiveTab(json[0].language);
       setLanguageJson(json);
-      const intervalId = setInterval(() => {
-        if (document.getElementsByClassName('ant-tabs-nav-wrap').length > 0) {
-          setDraggableRegion(document.getElementsByClassName('ant-tabs-nav-wrap').item(0) as HTMLElement);
-          clearInterval(intervalId);
-        }
-      }, 50);
     });
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key.toLocaleLowerCase() === 'alt') {
+        setIsTabVisible((prev) => !prev);
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+    addEventListener('keydown', handleKeyDown);
+    return () => {
+      removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
   if (languageJson.length === 0)
     return (
@@ -68,7 +69,7 @@ export function App() {
           size='small'
           animated={true}
           tabBarGutter={0}
-          tabBarStyle={{ height: '28px', margin: '0' }}
+          tabBarStyle={{ height: '32px', margin: '0', display: isTabVisible ? 'flex' : 'none' }}
           items={items}
         />
       </TabActiveContext.Provider>
