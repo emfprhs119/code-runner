@@ -17,8 +17,13 @@ export async function loadLanguageJson() {
   const languages: languageType[] = [];
   await Promise.all(
     languageJson.map(async (lang: languageType) => {
-      const result = await exec(`which ${lang.runner.split(' ')[0]}`, { cwd: 'third_party' });
-      if (result.exitCode === 0) languages.push(lang);
+      if (window.NL_OS === 'Windows') {
+        const result = await exec(`where ${lang.runner.split(' ')[0]} >nul 2>nul && echo true || echo false`);
+        if (result.stdOut.trim() === 'true') languages.push(lang);
+      } else {
+        const result = await exec(`which ${lang.runner.split(' ')[0]}`);
+        if (result.exitCode === 0) languages.push(lang);
+      }
     })
   );
   return languages;

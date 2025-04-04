@@ -20,7 +20,7 @@ const localForageEffect =
         .catch(() => defaultSplitState)
     );
     onSet((newValue: SettingsState, _: any, isReset: boolean) => {
-      isReset ? localForage.setData(key, null) : localForage.setData(key, JSON.stringify(newValue));
+      isReset ? localForage.setData(key, '') : localForage.setData(key, JSON.stringify(newValue));
     });
   };
 

@@ -36,8 +36,8 @@
     "binaryName": "CodeRunner",
     "resourcesPath": "/react-src/build/",
     "extensionsPath": "/extensions/",
-    "binaryVersion": "5.6.0",
-    "clientVersion": "5.6.0",
+    "binaryVersion": "6.0.0",
+    "clientVersion": "6.0.0",
     "frontendLibrary": {
       "patchFile": "/react-src/index.html",
       "devUrl": "http://localhost:3000",
@@ -45,6 +45,7 @@
       "initCommand": "npm install",
       "devCommand": "npm run dev",
       "buildCommand": "npm run build"
-    }
+    },
+    "copyItems": ["/language.json"]
   }
 }
